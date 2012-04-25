@@ -69,19 +69,33 @@ def printList(filters=[], areas=None):
 				print ftp_path + filename
 				
 
+
 if __name__=="__main__":
+	from optparse import OptionParser
 	from sys import argv
-	if len(argv) == 2:
-		filename = argv[1]
-		filters = []
-	elif len(argv) == 3 and argv[1].startswith("-f"):
-		filename = argv[2]
-		filters = map(int, list(argv[1][2:]))
-	else:
-		print "Usage: python %s [-f<numbers>] areafile" % (argv[0])
-		print "Examples: python %s areas.txt" % (argv[0])
-		print "          python %s -f345 areas.txt" % (argv[0])
+	import os
+	
+	descr_msg = "Return list of AMIE images from desired filters with coordinates in areas given in a file."
+	usage_msg = "%prog [options] filename"
+	
+	commandline = OptionParser(usage=usage_msg, description=descr_msg)
+	commandline.add_option("-f", "--filters", type="string", dest="filterstring",
+	                       action="store", metavar="STRING", 
+	                       help="Limit to given string of filters (see README).")
+
+	options, args = commandline.parse_args()
+	
+	if len(args) != 1:
+		print "Usage:", "%s [options] filename" % (os.path.basename(argv[0]))
+ 		print "Use option -h or --help for help message."
 		exit()
+	
+	filename = args[0]
+	
+	if options.filterstring:
+		filters = map(int, list(options.filterstring))
+	else:
+		filters = []
 
 	areas = getAreas(filename)
 	printList(filters, areas)
