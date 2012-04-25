@@ -54,7 +54,7 @@ def click(event):
 			start_y = y
 		
 if __name__=="__main__":
-	# First handle command line arguments:
+	# Handle command line arguments:
 	from sys import argv, exit
 	if len(argv) == 2:
 		# For one argument, use it as output filename, overwriting
@@ -95,4 +95,5 @@ if __name__=="__main__":
 			f.write("%.2f\t%.2f\t%.2f\t%.2f\n" % area)
 		print "%s %d areas to %s." % (action[mode], len(areas), outfile)
 	else:
-		print "No areas were selected. Output file not changed."
+		action = {"a":"changed", "w":"created"}
+		print "No areas were selected. Output file not %s." % (action[mode])
