@@ -52,6 +52,7 @@ def click(event):
 			hold = True
 			start_x = x
 			start_y = y
+		plot.draw()
 		
 if __name__=="__main__":
 	# Handle command line arguments:
@@ -82,6 +83,7 @@ if __name__=="__main__":
 	plot.imshow(moonmap, interpolation=None, extent=[-180, 180, -90, 90])
 	plot.plot([0, 0], [-90, 90], c='red')
 	plot.show()
+	
 	# Program waits at this point until plot window is closed.
 	# Then write areas:
 	if areas:
