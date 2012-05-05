@@ -44,7 +44,7 @@ The `listImages.py` program takes areas from the previous script and prints all 
 
 `python listImages.py areas.txt > imagepaths.txt` 
 
-will the full ftp paths to every AMIE image which are within any of the areas defined in `areas.txt`, and direct the output to `imagepaths.txt`.
+will print the full ftp paths to every AMIE image which are within any of the areas defined in `areas.txt`, and direct the output to `imagepaths.txt`.
 
 In the archive, a single AMIE exposure is divided into separate files for each of the seven filter regions. By default the script prints the path to all these individual frames. To limit the search to certain filters, you can specify them on the command line like this:
 
