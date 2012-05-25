@@ -1,28 +1,24 @@
+# Tools for downloading AMIE images of the lunar surface
 
-# Requirements
+## Requirements
 
+### Python
 
-## Python
+Python 2.7 is required. The scripts may work with 2.6 but I haven't tested. They do not work with Python 3 of course.
 
-Python 2.7 is required. The scripts may work with 2.6 but I haven't tested. They do not work with Python 3.
-
-A resonably new version of Matplotlib is required (the scripts were written in early 2011 but may work with older versions). Matplotlib requires NumPy to work.
-
-## Required files
-
-All these files need to be placed in the working directory.
+A resonably new version of Matplotlib is required (the scripts were written in early 2011 but will probably work with slightly older versions). Matplotlib requires NumPy to work.
 
 ### Lunar map
 
-The area selection script uses a lunar map from Clementine data, which is available on [Wikimedia Commons](http://commons.wikimedia.org/wiki/File:Moonmap_from_clementine_data.png).
+The area selection script uses a lunar map from Clementine data, which is available on [Wikimedia Commons](http://commons.wikimedia.org/wiki/File:Moonmap_from_clementine_data.png). This file needs to be in the working directory when the program is run.
 
 ### AMIE summary files
 
-To find the images in the given regions, the script requires the files `GEO_MOON_LP.TAB` and `GEO_MOON_EP.TAB` which are found in the AMIE data archive.
+To find the images in the given regions, the script requires the files `GEO_MOON_LP.TAB` and `GEO_MOON_EP.TAB` which are found in the AMIE data archive. Also these files need to be in the working directory.
 
-# Basic procedure
+## Basic procedure
 
-## Picking areas
+### Picking areas
 
 First pick out the areas you want. Run the area picker tool with the following command:
 
@@ -34,11 +30,11 @@ Note: because the longitude coordinate wraps from 0° to 360°, you cannot make 
 
 If the output file already exists, it will be overwritten without asking. You can also run the script with the option `-a`, in which case new areas will be appended to an existing file.
 
-## Plotting the areas
+### Plotting the areas
 
 You can draw the areas listed in a file by running `python plotareas.py areas.txt`.
 
-## Listing the images
+### Listing the images
 
 The `listImages.py` program takes areas from the previous script and prints all the ftp paths to relevant AMIE images to standard output. The command 
 
@@ -52,7 +48,7 @@ In the archive, a single AMIE exposure is divided into separate files for each o
 
 This would show only the images for filters 2, 3 and 4. The numbers must be given as one string with no spaces.
 
-## Downloading images
+### Downloading images
 
 The `wget` tool can be used to download all images using the paths in a file. To download all the images into the current working directory, simply run 
 
